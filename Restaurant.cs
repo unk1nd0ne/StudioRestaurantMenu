@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace StudioRestaurantMenu
 {
-    class Program
+    class Restaurant
     {
         private static void Main()
         {
