@@ -6,45 +6,46 @@ namespace StudioRestaurantMenu
 {
     class RestaurantMenu
     {
-        //bool running = true;
+        private static string isNew;
 
-        public static void DisplayMenu()
+        public static void PrintFullMenu(Menu menu)
         {
-            Menu menu1 = new Menu();
-            menu1.AddItem(new MenuItem("Fries", 1.99, "From Idaho", "appetizers"));
-            menu1.AddItem(new MenuItem("Cheese Curds", 1.89, "From Wisconsin", "appetizers"));
-            menu1.AddItem(new MenuItem("Fish", 2.99, "Cold Fish", "main"));
-            menu1.AddItem(new MenuItem("Beef", 3.89, "It's what's for dinner", "main"));
-            menu1.AddItem(new MenuItem("Ice Cream", 3.99, "It's Cold", "deserts"));
-            menu1.AddItem(new MenuItem("Pie", 4.89, "It's got fruit in it", "deserts"));
-            string isNew;
+           
 
             Console.WriteLine("Our Menu");
-            Console.WriteLine($"Updated: {menu1.updated}");
+            Console.WriteLine($"Updated: {menu.updated}");
             Console.WriteLine("Appetisers\n");
-            foreach (string key in menu1.appetizers.Keys)
+            foreach (string key in menu.appetizers.Keys)
             {
                 Console.WriteLine("*****");
-                isNew = (DateTime.Now - menu1.appetizers[key].dateAdded).TotalDays < 14 ? "**NEW**" : "";
-                Console.WriteLine($"{menu1.appetizers[key].name} \t {isNew} \t\t\t\t {menu1.appetizers[key].price} \n {menu1.appetizers[key].description}");
+                isNew = (DateTime.Now - menu.appetizers[key].dateAdded).TotalDays < 14 ? "**NEW**" : "";
+                Console.WriteLine($"{menu.appetizers[key].name} \t {isNew} \t\t\t\t {menu.appetizers[key].price} \n {menu.appetizers[key].description}");
                 Console.WriteLine("*****\n");
             }
             Console.WriteLine("Main Courses\n");
-            foreach (string key in menu1.entrees.Keys)
+            foreach (string key in menu.entrees.Keys)
             {
                 Console.WriteLine("*****");
-                isNew = (DateTime.Now - menu1.entrees[key].dateAdded).TotalDays < 14 ? "**NEW**" : "";
-                Console.WriteLine($"{menu1.entrees[key].name} \t {isNew} \t\t\t\t {menu1.entrees[key].price} \n {menu1.entrees[key].description}");
+                isNew = (DateTime.Now - menu.entrees[key].dateAdded).TotalDays < 14 ? "**NEW**" : "";
+                Console.WriteLine($"{menu.entrees[key].name} \t {isNew} \t\t\t\t {menu.entrees[key].price} \n {menu.entrees[key].description}");
                 Console.WriteLine("*****\n");
             }
             Console.WriteLine("Deserts\n");
-            foreach (string key in menu1.deserts.Keys)
+            foreach (string key in menu.deserts.Keys)
             {
                 Console.WriteLine("*****");
-                isNew = (DateTime.Now - menu1.deserts[key].dateAdded).TotalDays < 14 ? "**NEW**" : "";
-                Console.WriteLine($"{menu1.deserts[key].name} \t {isNew} \t\t\t\t {menu1.deserts[key].price} \n {menu1.deserts[key].description}");
+                isNew = (DateTime.Now - menu.deserts[key].dateAdded).TotalDays < 14 ? "**NEW**" : "";
+                Console.WriteLine($"{menu.deserts[key].name} \t {isNew} \t\t\t\t {menu.deserts[key].price} \n {menu.deserts[key].description}");
                 Console.WriteLine("*****\n");
             }
+        }
+
+        public static void PrintSingleMenu (Dictionary<string, MenuItem> menuCat, string key)
+        {
+            Console.WriteLine("*****");
+            isNew = (DateTime.Now - menuCat[key].dateAdded).TotalDays < 14 ? "**NEW**" : "";
+            Console.WriteLine($"{menuCat[key].name} \t {isNew} \t\t\t\t {menuCat[key].price} \n {menuCat[key].description}");
+            Console.WriteLine("*****\n");
         }
 
         
